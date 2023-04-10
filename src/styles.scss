@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400&display=swap');
+@import 'node_modules/@fortawesome/fontawesome-free/css/fontawesome';
+@import 'node_modules/@fortawesome/fontawesome-free/css/brands';
+@import 'node_modules/@fortawesome/fontawesome-free/css/solid';
+
+h1, h2, h3, p, span, a {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+i {
+  font-size: 1.5rem;
+}

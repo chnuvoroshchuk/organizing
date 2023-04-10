@@ -1,0 +1,69 @@
+.main-info-wrapper {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/da/1024px-Litomerice_from_Radobyl.jpg");
+
+  .background-cover {
+    background-color: #111111;
+    opacity: 90%;
+    height: 100%;
+
+    .content {
+      padding: 120px 90px 20px;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: 60px;
+        text-align: justify;
+        width: 300px;
+        margin-bottom: 24px;
+      }
+
+      p {
+        margin: auto 0 40px auto;
+        width: 600px;
+        color: #898989;
+      }
+
+      button {
+        margin: auto 0 auto auto;
+        width: 180px;
+      }
+    }
+  }
+}
+
+.feedback {
+  .content {
+    p {
+      font-size: 24px;
+    }
+  }
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: 40px;
+    margin: auto auto 24px auto;
+  }
+
+  .card-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 80px;
+
+    .card {
+      max-width: 400px;
+    }
+  }
+}
+
+.about {
+  .content {
+    h4 {
+      font-size: 24px;
+    }
+  }
+}

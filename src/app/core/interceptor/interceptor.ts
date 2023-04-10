@@ -5,6 +5,8 @@ import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {Router} from "@angular/router";
 
+const BASE_URL = 'http://192.168.0.107'
+
 @Injectable()
 
 export class TokenInterceptor implements HttpInterceptor{
@@ -13,13 +15,17 @@ export class TokenInterceptor implements HttpInterceptor{
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    req = req.clone({ url: `${BASE_URL}${req.url}` });
+
     if (this.auth.isAuthenticated()) {
       req = req.clone({
+        url: `${BASE_URL}${req.url}`,
         setHeaders: {
           Authorization: this.auth.getToken()
         }
       })
     }
+
     return next.handle(req).pipe(
       catchError(
         (error: HttpErrorResponse) =>  this.handleAuthError(error)

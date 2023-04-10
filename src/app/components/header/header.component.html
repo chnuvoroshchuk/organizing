@@ -1,9 +1,24 @@
-<div class="navbar is-dark">
-    <div class="navbar-brand">
-      <a class="navbar-item">
-        <img src="../../../assets/logo.png">
+<nav
+  aria-label="main navigation"
+  class="navbar is-black px-5 py-4"
+  role="navigation"
+>
+  <div class="navbar-menu" id="navbarBasicExample">
+    <div class="navbar-start">
+      <a class="has-text-light is-size-4" routerLink="/">
+        Clarity Organizing
       </a>
     </div>
-  <!--logo:-->
-</div>
 
+    <div class="navbar-end">
+      <a class="navbar-item" routerLink="/document"> Document </a>
+      <a class="navbar-item" routerLink="/task"> Tasks </a>
+      <a class="navbar-item" routerLink="/helper"> Helper </a>
+      <div class="navbar-item">
+        <span class="icon">
+          <i class="fa-solid fa-user"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>

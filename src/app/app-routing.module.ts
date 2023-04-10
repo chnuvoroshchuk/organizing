@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
 import {UserComponent} from "./components/user/user.component";
 import {TasksComponent} from "./components/task/tasks.component";
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: HomeComponent
   },
   {
-    path:'person',
+    path: 'person',
     component: UserComponent
   },
   {
-    path:'task',
+    path: 'task',
     component: TasksComponent
   }
 ];
@@ -23,5 +23,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
+
 //TODO: about screen, person screen, tasks screen + openAI + promptAI
