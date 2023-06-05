@@ -1,8 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {UserInterface} from '../interface/auth.interface';
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+}
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +20,9 @@ export class AuthService {
 
   public login(user: UserInterface): Observable<{ token: string, user_id: number }> {
 
-    return this.http.post<{ token: string, user_id: number }>('/api/v1/auth/login', user)
+    //TODO: check LOGIN
+
+    return this.http.post<{ token: string, user_id: number }>('/api/login', user)
       .pipe(
         tap(
           ({token, user_id}) => this.setAuthData(token, user_id)
@@ -25,7 +31,7 @@ export class AuthService {
   }
 
   public logOut() {
-    return this.http.post('/api/v1/auth/logout', '')
+    return this.http.post('/api/logout', '')
       .pipe(
         tap(
           () => localStorage.clear()
@@ -51,6 +57,19 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  getRegistrationConfirmation(token: string) {
+    const options = {
+      params: new HttpParams().set('token', token)
+    }
+    return this.http.get('/api/confirm-account' + options);
+  }
+
+  sendRequestForRegistration(person: PersonInterface) {
+    const body = JSON.stringify(person);
+    console.log(body);
+    return this.http.post('/api/register', body, httpOptions);
   }
 
 }

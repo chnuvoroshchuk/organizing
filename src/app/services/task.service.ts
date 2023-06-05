@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,25 +17,37 @@ export class TaskService {
   }
 
   getTaskByTitle(title: string) {
-    return this.http.get('/api/task/' + title);
+    const options = {
+      params: new HttpParams().set('title', title)
+    };
+    return this.http.get('/api/task/{title}' + options);
   }
 
   getTaskByStatus(status: string) {
-    return this.http.get('/api/task/' + status);
+    const options = {
+      params: new HttpParams().set('status', status)
+    }
+    return this.http.get('/api/task/status/' + options);
   }
 
   getTaskByType(type: string) {
-    return this.http.get('/api/task/' + type);
+    const options = {
+      params: new HttpParams().set('type', type)
+    }
+    return this.http.get('/api/task/type/' + type);
   }
 
-  addTask(task: any) {
+  addTask(task: TaskInterface) {
     const body = JSON.stringify(task);
     console.log(body);
     return this.http.post('/api/task/save', body, httpOptions);
   }
 
   deleteTaskById(id: number) {
-    return this.http.delete('/api/task/' + id);
+    const options = {
+      options: new HttpParams().set('id', id)
+    }
+    return this.http.delete('/api/task/' + options);
   }
 
   //TODO: check task

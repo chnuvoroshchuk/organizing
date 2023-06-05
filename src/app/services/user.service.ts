@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -18,27 +18,33 @@ export class UserService {
   }
 
   getUserByUsername(username: string) {
-    return this.http.get('/api/person/' + username);
+    const options = {
+      options: new HttpParams().set('username', username)
+    }
+    return this.http.get('/api/person/' + options);
   }
 
-  addPerson(person: any) {
+  addPerson(person: PersonInterface) {
     const body = JSON.stringify(person);
     console.log(body);
     return this.http.post('/api/person/save', body, httpOptions);
   }
 
-  addRole(role: any) {
+  addRole(role: RolesInterface) {
     const body = JSON.stringify(role);
     console.log(body);
     return this.http.post('/api/role/save', body, httpOptions);
   }
-  addRoleToUser(roleToUser: any) {
+  addRoleToUser(roleToUser: RoleToUserInterface) {
     const body = JSON.stringify(roleToUser);
     console.log(body);
     return this.http.post('/api/role/addtouser', body, httpOptions);
   }
 
   deleteUserById(id: number) {
+    const options = {
+      options: new HttpParams().set('id', id)
+    }
     return this.http.delete('/api/person/' + id);
   }
 
