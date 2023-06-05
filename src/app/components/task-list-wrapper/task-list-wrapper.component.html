@@ -1,0 +1,25 @@
+<div class="pl-3 pr-3 is-flex is-justify-content-space-between">
+  <h3 class="is-size-4 has-text-light">{{ type | titlecase }} tasks</h3>
+  <a
+    (click)="toggleListOpened()"
+    class="mt-auto mb-auto ml-2 is-flex is-justify-content-center"
+  >
+    <span class="icon has-text-light">
+      <i class="fas fa-caret-{{ isOpened ? 'up' : 'down' }} is-size-5"></i>
+    </span>
+  </a>
+</div>
+<div class="column">
+  <button
+    [attr.data-target]="'create-task-modal-' + type"
+    class="js-modal-trigger has-text-grey mt-2 mb-2 new-task"
+  >
+    <span class="icon">
+      <i class="fas fa-plus is-size-5"></i>
+    </span>
+    New task...
+  </button>
+  <app-task-item *ngFor="let task of taskList" [data]="task"></app-task-item>
+</div>
+
+<app-create-task-modal [taskType]="type"></app-create-task-modal>

@@ -1,0 +1,24 @@
+<div class="is-fullhd p-3">
+  <div class="box upload-wrapper">
+    <div>
+      <label class="drop-container" for="file-upload">
+        <span class="drop-title">Drop files here</span>
+        or
+        <input
+          accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          id="file-upload"
+          required
+          type="file"
+        />
+      </label>
+    </div>
+  </div>
+
+  <h3 class="title has-text-light mb-5">Your Documents</h3>
+
+  <div class="columns is-multiline">
+    <div *ngFor="let document of documents" class="column is-2">
+      <app-document [document]="document"></app-document>
+    </div>
+  </div>
+</div>

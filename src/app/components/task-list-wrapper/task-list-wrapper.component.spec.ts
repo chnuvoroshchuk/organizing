@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserComponent } from './user.component';
+import { TaskListWrapperComponent } from './task-list-wrapper.component';
 
-describe('UserComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
+describe('TaskListWrapperComponent', () => {
+  let component: TaskListWrapperComponent;
+  let fixture: ComponentFixture<TaskListWrapperComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      declarations: [ TaskListWrapperComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserComponent);
+    fixture = TestBed.createComponent(TaskListWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

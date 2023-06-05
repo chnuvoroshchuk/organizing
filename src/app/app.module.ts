@@ -6,10 +6,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { UserComponent } from './components/user/user.component';
-import { TasksComponent } from './components/task/tasks.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {TokenInterceptor} from "src/app/core/interceptor/interceptor";
+import { TasksComponent } from './components/tasks/tasks.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from 'src/app/core/interceptor/interceptor';
+import { TaskItemComponent } from './components/task-item/task-item.component';
+import { TaskListWrapperComponent } from './components/task-list-wrapper/task-list-wrapper.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { DocumentComponent } from './components/document/document.component';
+import { DocumentListComponent } from './components/document-list/document-list.component';
+import { CreateTaskModalComponent } from './components/modals/create-task-modal/create-task-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,21 +23,23 @@ import {TokenInterceptor} from "src/app/core/interceptor/interceptor";
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    UserComponent,
-    TasksComponent
+    TasksComponent,
+    TaskItemComponent,
+    TaskListWrapperComponent,
+    LoginComponent,
+    SignUpComponent,
+    DocumentComponent,
+    DocumentListComponent,
+    CreateTaskModalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

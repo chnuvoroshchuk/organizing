@@ -11,3 +11,10 @@ h1, h2, h3, p, span, a {
 i {
   font-size: 1.5rem;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}

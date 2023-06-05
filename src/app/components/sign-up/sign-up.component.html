@@ -1,0 +1,71 @@
+<section class="hero">
+  <div class="hero-body has-text-centered is-justify-content-center">
+    <div class="sign-up">
+      <form>
+        <div class="field">
+          <div class="control">
+            <input
+              autocomplete="off"
+              class="input is-medium is-rounded"
+              placeholder="Username"
+              required
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input
+              autocomplete="off"
+              class="input is-medium is-rounded"
+              max="110"
+              min="6"
+              placeholder="Age"
+              required
+              type="number"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input
+              autocomplete="username"
+              class="input is-medium is-rounded"
+              placeholder="hello@example.com"
+              required
+              type="email"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input
+              autocomplete="current-password"
+              class="input is-medium is-rounded"
+              placeholder="**********"
+              required
+              type="password"
+            />
+          </div>
+        </div>
+        <br />
+        <button
+          class="button is-block is-fullwidth is-primary is-medium is-rounded"
+          type="submit"
+        >
+          Sign Up
+        </button>
+      </form>
+      <br />
+      <nav class="level is-flex">
+        <div class="level-item has-text-centered">
+          <div>
+            <a class="has-text-primary" routerLink="/login"
+              >Already has an account?</a
+            >
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>

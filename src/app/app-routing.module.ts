@@ -1,29 +1,38 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "./components/home/home.component";
-import {UserComponent} from "./components/user/user.component";
-import {TasksComponent} from "./components/task/tasks.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
+import { SignUpComponent } from 'src/app/components/sign-up/sign-up.component';
+import { DocumentListComponent } from 'src/app/components/document-list/document-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
-    path: 'person',
-    component: UserComponent
+    path: 'documents',
+    component: DocumentListComponent,
   },
   {
     path: 'task',
-    component: TasksComponent
-  }
+    component: TasksComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
 
 //TODO: about screen, person screen, tasks screen + openAI + promptAI
