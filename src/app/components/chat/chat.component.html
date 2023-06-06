@@ -1,0 +1,25 @@
+<div class="chat-wrapper p-4">
+  <div class="card chat-window p-5">
+    <div class="card-content">
+      <div class="chat-content">
+        <div
+          *ngFor="let chatItem of chatHistory"
+          class="chat-message {{ chatItem?.fromUser ? 'fromUser' : '' }}"
+        >
+          <span>{{ chatItem.text }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer user-input">
+      <textarea
+        #message
+        class="textarea"
+        placeholder="e.g. Hey! How can I better describe a ticket..."
+        rows="2"
+      ></textarea>
+      <button (click)="sendMessage(message)" class="button is-primary">
+        Send
+      </button>
+    </div>
+  </div>
+</div>

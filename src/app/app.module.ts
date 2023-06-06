@@ -16,6 +16,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DocumentComponent } from './components/document/document.component';
 import { DocumentListComponent } from './components/document-list/document-list.component';
 import { CreateTaskModalComponent } from './components/modals/create-task-modal/create-task-modal.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CreateTaskModalComponent } from './components/modals/create-task-modal/
     DocumentComponent,
     DocumentListComponent,
     CreateTaskModalComponent,
+    ChatComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
