@@ -1,6 +1,6 @@
 <nav
   aria-label="main navigation"
-  class="navbar is-black px-5 py-4"
+  class="navbar is-light px-5 py-4"
   role="navigation"
 >
   <div class="navbar-menu" id="navbarBasicExample">
@@ -11,12 +11,32 @@
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item" routerLink="/documents"> Documents </a>
-      <a class="navbar-item" routerLink="/task"> Tasks </a>
-      <a class="navbar-item" routerLink="/chat"> AI chat </a>
-      <a class="navbar-item" routerLink="/user">
+      <a
+        [routerLinkActive]="['is-active']"
+        class="navbar-item"
+        routerLink="/documents"
+      >
+        Documents
+      </a>
+      <a
+        [routerLinkActive]="['is-active']"
+        class="navbar-item"
+        routerLink="/task"
+      >
+        Tasks
+      </a>
+      <a
+        [routerLinkActive]="['is-active']"
+        class="navbar-item"
+        routerLink="/chat"
+      >
+        AI chat
+      </a>
+      <a (click)="handleAuthClick()" class="navbar-item">
         <span class="icon">
-          <i class="fa-solid fa-user"></i>
+          <i
+            class="fa-solid fa-right-{{ isAuthorized ? 'from' : 'to' }}-bracket"
+          ></i>
         </span>
       </a>
     </div>

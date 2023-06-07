@@ -1,13 +1,14 @@
 
 .content-wrapper {
-  background-color: #111111;
   height: 100%;
+  margin: 15px 0;
 }
 
 .app-wrapper {
   display: flex;
+  background-color: #111111;
   flex-direction: column;
-  //height: 100%;
+  min-height: 100vh;
 
   .app-footer {
     margin: auto auto 0 auto;

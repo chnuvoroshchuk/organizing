@@ -12,12 +12,12 @@
 <div class="column">
   <button
     [attr.data-target]="'create-task-modal-' + type"
-    class="js-modal-trigger has-text-grey mt-2 mb-2 new-task"
+    class="js-modal-trigger has-text-grey new-task button is-black"
   >
     <span class="icon">
       <i class="fas fa-plus is-size-5"></i>
     </span>
-    New task...
+    <span> New task... </span>
   </button>
   <app-task-item *ngFor="let task of taskList" [data]="task"></app-task-item>
 </div>
