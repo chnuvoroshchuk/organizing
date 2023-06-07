@@ -1,7 +1,7 @@
 <section class="hero">
   <div class="hero-body has-text-centered is-justify-content-center">
     <div class="sign-up">
-      <form>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="field">
           <div class="control">
             <input
@@ -10,6 +10,7 @@
               placeholder="Username"
               required
               type="text"
+              formControlName="username"
             />
           </div>
         </div>
@@ -23,6 +24,7 @@
               placeholder="Age"
               required
               type="number"
+              formControlName="age"
             />
           </div>
         </div>
@@ -34,6 +36,7 @@
               placeholder="hello@example.com"
               required
               type="email"
+              formControlName="email"
             />
           </div>
         </div>
@@ -45,27 +48,28 @@
               placeholder="**********"
               required
               type="password"
+              formControlName="password"
             />
           </div>
         </div>
-        <br />
+        <br/>
         <button
           class="button is-block is-fullwidth is-primary is-medium is-rounded"
           type="submit"
         >
           Sign Up
         </button>
-      </form>
-      <br />
-      <nav class="level is-flex">
-        <div class="level-item has-text-centered">
-          <div>
-            <a class="has-text-primary" routerLink="/login"
+        <br/>
+        <nav class="level is-flex">
+          <div class="level-item has-text-centered">
+            <div>
+              <a class="has-text-primary" routerLink="/login"
               >Already has an account?</a
-            >
+              >
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </form>
     </div>
   </div>
 </section>

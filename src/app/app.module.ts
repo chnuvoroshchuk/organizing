@@ -16,7 +16,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DocumentComponent } from './components/document/document.component';
 import { DocumentListComponent } from './components/document-list/document-list.component';
 import { CreateTaskModalComponent } from './components/modals/create-task-modal/create-task-modal.component';
-import { ChatComponent } from './components/chat/chat.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ChatComponent} from "./components/chat/chat.component";
+import { ConfirmRegistrationComponent } from './components/confirm-registration/confirm-registration.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,11 @@ import { ChatComponent } from './components/chat/chat.component';
     SignUpComponent,
     DocumentComponent,
     DocumentListComponent,
-    CreateTaskModalComponent,
     ChatComponent,
+    CreateTaskModalComponent,
+    ConfirmRegistrationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

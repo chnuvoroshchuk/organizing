@@ -12,6 +12,6 @@ export class AiService {
     const options = {
       params: new HttpParams().set('prompt', prompt)
     }
-    return this.http.get('/api/chat' + options);
+    return this.http.get('/api/chat', options);
   }
 }

@@ -8,11 +8,22 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TasksComponent implements OnInit {
   constructor(private taskService: TaskService) {}
+  //
+  // public tasks = {
+  //   [TaskTypeEnum.DAILY]: [],
+  //   [TaskTypeEnum.WEEKLY]: [],
+  //   [TaskTypeEnum.MONTHLY]: [],
+  // }
 
   ngOnInit(): void {
-    this.taskService
+    this.getTasks();
+  }
+
+  async getTasks() {
+   await this.taskService
       .getAllTasks()
-      .toPromise()
-      .then((res) => console.log(res));
+      .toPromise();
+      // .catch(e => console.error(e))
+      // .then((res) => console.log('result', res));
   }
 }

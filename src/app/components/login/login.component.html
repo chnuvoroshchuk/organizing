@@ -1,7 +1,7 @@
 <section class="hero">
   <div class="hero-body has-text-centered is-justify-content-center">
     <div class="login">
-      <form>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="field">
           <div class="control">
             <input
@@ -10,6 +10,7 @@
               placeholder="hello@example.com"
               required
               type="email"
+              formControlName="email"
             />
           </div>
         </div>
@@ -21,6 +22,7 @@
               placeholder="**********"
               required
               type="password"
+              formControlName="password"
             />
           </div>
         </div>
@@ -34,11 +36,6 @@
       </form>
       <br />
       <nav class="level is-flex">
-        <div class="level-item has-text-centered">
-          <div>
-            <a class="has-text-light" href="#">Forgot Password?</a>
-          </div>
-        </div>
         <div class="level-item has-text-centered">
           <div>
             <a class="has-text-primary" routerLink="/sign-up"

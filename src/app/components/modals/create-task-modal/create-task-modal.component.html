@@ -1,14 +1,67 @@
 <div class="modal" id="create-task-modal-{{ taskType }}">
   <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">New {{ taskType }} task</p>
-      <button aria-label="close" class="delete"></button>
-    </header>
-    <section class="modal-card-body"></section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button">Cancel</button>
-    </footer>
-  </div>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">New {{ taskType }} task</p>
+        <button aria-label="close" class="delete"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input class="input is-normal" type="text" formControlName="title">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <input class="input is-normal" type="text" formControlName="description">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Duration</label>
+          <div class="control">
+            <input class="input is-normal" type="datetime-local" formControlName="duration">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Status</label>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option>PLANNED</option>
+                <option>STARTED</option>
+                <option>PAUSED</option>
+                <option>DONE</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="canEdit">
+              Can edit?
+            </label>
+            <label class="radio">
+              <input type="radio" name="repeat">
+              Repeat?
+            </label>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button
+          type="submit"
+          class="button is-success" >
+          <!--[disabled]="taskForm.invalid || taskForm.disabled"-->
+
+          Save changes
+        </button>
+        <button class="button">Cancel</button>
+      </footer>
+    </div>
+  </form>
+
 </div>

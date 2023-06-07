@@ -18,14 +18,10 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  public login(user: UserInterface): Observable<{ token: string, user_id: number }> {
-
-    //TODO: check LOGIN
-
-    return this.http.post<{ token: string, user_id: number }>('/api/login', user)
-      .pipe(
+  public login(user: UserInterface): Observable<{ access_token: string, refresh_token: string }> {
+    return this.http.post<{ access_token: string, refresh_token: string }>(`/api/login?username=${user.username}&password=${user.password}`, {}).pipe(
         tap(
-          ({token, user_id}) => this.setAuthData(token, user_id)
+          ({access_token, refresh_token}) => this.setAuthData(access_token, refresh_token)
         )
       )
   }
@@ -39,14 +35,14 @@ export class AuthService {
       )
   }
 
-  private setAuthData(token: string, id: number) {
-    localStorage.setItem('userId', id.toString())
-    localStorage.setItem('auth-token', token)
-    this.token = token
+  private setAuthData(sessionToken: string, refreshToken: string) {
+    localStorage.setItem('sessionToken', sessionToken)
+    localStorage.setItem('refreshToken', refreshToken)
+    this.token = sessionToken
   }
 
   public getToken(): string {
-    const token = localStorage.getItem('auth-token')
+    const token = localStorage.getItem('sessionToken')
     return token ? token : ''
   }
 
@@ -63,7 +59,8 @@ export class AuthService {
     const options = {
       params: new HttpParams().set('token', token)
     }
-    return this.http.get('/api/confirm-account' + options);
+    console.log('zalupa')
+    return this.http.get('/api/confirm-account', options);
   }
 
   sendRequestForRegistration(person: PersonInterface) {

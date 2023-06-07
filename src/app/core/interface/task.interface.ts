@@ -1,4 +1,4 @@
-export interface TaskInterface {
+interface TaskInterface {
   id: number;
   description: string;
   title: string;
@@ -7,4 +7,10 @@ export interface TaskInterface {
   duration: Date;
   canEdit: boolean;
   repeat: boolean;
+}
+
+enum TaskTypeEnum {
+  DAILY = 'DAILY',
+  WEEKLY = 'WEEKLY',
+  MONTHLY = 'MONTHLY'
 }

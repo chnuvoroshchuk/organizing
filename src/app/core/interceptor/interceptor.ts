@@ -1,11 +1,18 @@
 import {Injectable} from "@angular/core";
 import {AuthService} from "../service/auth.service";
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpHeaders,
+  HttpInterceptor,
+  HttpRequest
+} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {Router} from "@angular/router";
 
-const BASE_URL = 'http://192.168.0.107'
+const BASE_URL = 'http://localhost:8080';
 
 @Injectable()
 
@@ -15,13 +22,18 @@ export class TokenInterceptor implements HttpInterceptor{
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({ url: `${BASE_URL}${req.url}` });
+    req = req.clone({ url: `${BASE_URL}${req.url}`, headers: new HttpHeaders
+      ({'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',}) });
 
     if (this.auth.isAuthenticated()) {
       req = req.clone({
-        url: `${BASE_URL}${req.url}`,
+        url: req.url,
         setHeaders: {
-          Authorization: this.auth.getToken()
+          Authorization: `Bearer ${this.auth.getToken()}`
         }
       })
     }
