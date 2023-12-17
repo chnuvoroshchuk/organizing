@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -7,23 +6,8 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
-  constructor(private taskService: TaskService) {}
-  //
-  // public tasks = {
-  //   [TaskTypeEnum.DAILY]: [],
-  //   [TaskTypeEnum.WEEKLY]: [],
-  //   [TaskTypeEnum.MONTHLY]: [],
-  // }
+  constructor() {}
 
   ngOnInit(): void {
-    this.getTasks();
-  }
-
-  async getTasks() {
-   await this.taskService
-      .getAllTasks()
-      .toPromise();
-      // .catch(e => console.error(e))
-      // .then((res) => console.log('result', res));
   }
 }

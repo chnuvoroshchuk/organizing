@@ -3,6 +3,5 @@ interface PersonInterface {
   username: string,
   password: string,
   roles?: RolesInterface[],
-  // array RolesInterface -> ok? and roles? ok?
   age?: number
 }

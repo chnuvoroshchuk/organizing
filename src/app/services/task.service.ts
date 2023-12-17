@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-}
 @Injectable({
   providedIn: 'root'
 })
@@ -12,8 +10,8 @@ export class TaskService {
   constructor(private http: HttpClient) {
   }
 
-  getAllTasks() {
-    return this.http.get('/api/tasks');
+  getAllTasks(): Observable<Array<TaskInterface>> {
+    return this.http.get<Array<TaskInterface>>('/api/tasks');
   }
 
   getTaskByTitle(title: string) {
@@ -30,25 +28,33 @@ export class TaskService {
     return this.http.get('/api/task/status/' + options);
   }
 
-  getTaskByType(type: string) {
+  getTaskByType(type: string): Observable<Array<TaskInterface>> {
     const options = {
-      params: new HttpParams().set('type', type)
-    }
-    return this.http.get('/api/task/type/' + type);
+      params: new HttpParams().set('username', localStorage.getItem('username') as string),
+    };
+    return this.http.get<Array<TaskInterface>>(`/api/task/type/${type}`, options);
   }
 
   addTask(task: TaskInterface) {
+    const httpOption = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: new HttpParams().set('username', localStorage.getItem('username') as string),
+    }
     const body = JSON.stringify(task);
     console.log(body);
-    return this.http.post('/api/task/save', body, httpOptions);
+    return this.http.post('/api/task/save', body, httpOption);
+  }
+  updateTask(task: TaskInterface) {
+    const httpOption = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      params: new HttpParams().set('username', localStorage.getItem('username') as string),
+    }
+    const body = JSON.stringify(task);
+    console.log(body);
+    return this.http.post('/api/task/save', body, httpOption);
   }
 
   deleteTaskById(id: number) {
-    const options = {
-      options: new HttpParams().set('id', id)
-    }
-    return this.http.delete('/api/task/' + options);
+    return this.http.delete(`/api/task/${id}`);
   }
-
-  //TODO: check task
 }

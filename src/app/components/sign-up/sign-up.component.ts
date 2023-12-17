@@ -24,8 +24,8 @@ export class SignUpComponent implements OnInit {
 
   async onSubmit() {
     const body = {...this.userForm.value};
-    await this.authService.sendRequestForRegistration(body).toPromise();
+    await this.authService.sendRequestForRegistration(body).toPromise().catch((e) => e);
     console.log(body);
-    await this.router.navigate(['/confirm-account'])
+    await this.router.navigate(['/login'])
   }
 }

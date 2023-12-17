@@ -1,5 +1,5 @@
 .chat-wrapper {
-  height: 618px;
+  height: 760px;
 
   .chat-window {
     height: 100%;
@@ -13,7 +13,7 @@
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
-    max-height: 418px;
+    max-height: 496px;
 
     .chat-message {
       width: 500px;
@@ -45,4 +45,12 @@
       min-width: 90%;
     }
   }
+}
+
+.card-content {
+  flex: 1 0 80%;
+}
+
+.card-footer {
+  flex: 1 0 20%;
 }

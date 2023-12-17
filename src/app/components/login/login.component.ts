@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   private showError: boolean | undefined;
-  private errorMessage: string | undefined;
+  errorMessage: string | undefined;
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder,
               private router: Router) {}
@@ -27,12 +27,14 @@ export class LoginComponent implements OnInit {
     const body = {...this.form.value};
     console.log(body);
     await this.authService.login({username: body.email, password: body.password}).subscribe({
-      next: (_) => this.router.navigate(['/task']),
+      next: (_) => this.router.navigate(['/task']).then(() => {
+        window.location.reload();
+      }),
       error: (err: HttpErrorResponse) => {
         this.showError = true;
         this.errorMessage = err.message;
       }
-    });;
+    });
 
   }
 }

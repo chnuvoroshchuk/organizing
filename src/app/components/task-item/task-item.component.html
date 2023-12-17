@@ -1,39 +1,49 @@
 <div class="card mt-2">
   <header class="card-header is-flex is-justify-content-space-between">
     <div class="is-flex is-align-items-center">
-      <a class="mt-auto mb-auto ml-2 is-flex is-justify-content-center">
-        <span class="icon has-text-success">
-          <i class="fas fa-check-square is-size-5"></i>
-        </span>
-      </a>
-      <h4 class="is-size-4 pl-4 has-text-centered">Test</h4>
+
+      <div class="control has-icons-left ml-2">
+        <div class="select">
+          <select [(ngModel)]="task.status" (change)="updateStatus()">
+            <option *ngFor="let status of availableStatuses" class="icon">
+              {{status}}
+            </option>
+          </select>
+        </div>
+        <div class="icon is-small is-left">
+          <i [class]="'fas' + ' ' + statusIcons[task.status]"></i>
+        </div>
+      </div>
     </div>
 
     <div class="is-flex">
-      <a class="card-footer-item" href="#">
+      <a class="card-footer-item" (click)="repeatTask()">
+        <span class="icon has-text-success">
+          <i class="fas fa-clock-rotate-left is-size-6"></i>
+        </span>
+      </a>
+      <a class="card-footer-item" *ngIf="task.canEdit" (click)="openEditModal()">
         <span class="icon">
           <i class="fas fa-pencil is-size-6"></i>
         </span>
       </a>
-      <a class="card-footer-item" href="#">
+      <a class="card-footer-item" (click)="deleteTask(task.id)">
         <span class="icon has-text-danger is-small">
           <i class="fas fa-trash is-size-6"></i>
         </span>
       </a>
     </div>
   </header>
-  <div class="card-content">
-    <div class="content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-        iaculis mauris.
-        <a href="#">@bulmaio</a>. <a href="#">#css</a>
-        <a href="#">#responsive</a>
-      </p>
-
+  <div class="card-content pt-3">
+    <div class="content item-content">
+      <h4 class="is-size-4 pl-4 mb-0">{{task.title}}</h4>
+      <hr class="mb-0 mt-3">
+      <p>{{task.description}}</p>
       <span class="is-flex is-justify-content-flex-end">
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        {{task.duration | date : 'MMM d, y, hh:mm'}}
       </span>
     </div>
   </div>
 </div>
+
+<app-edit-task-modal [task]="task"></app-edit-task-modal>

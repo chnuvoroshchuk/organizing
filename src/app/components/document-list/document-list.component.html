@@ -5,10 +5,11 @@
         <span class="drop-title">Drop files here</span>
         or
         <input
-          accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          accept=".jpg,.png,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           id="file-upload"
           required
           type="file"
+          (change)="onFileSelect($event)"
         />
       </label>
     </div>

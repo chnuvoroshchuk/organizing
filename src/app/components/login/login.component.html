@@ -7,9 +7,9 @@
             <input
               autocomplete="username"
               class="input is-medium is-rounded"
-              placeholder="hello@example.com"
+              placeholder="Please enter you login"
               required
-              type="email"
+              type="text"
               formControlName="email"
             />
           </div>
@@ -24,6 +24,7 @@
               type="password"
               formControlName="password"
             />
+            <span class="error" *ngIf="errorMessage">Please enter right password</span>
           </div>
         </div>
         <br />

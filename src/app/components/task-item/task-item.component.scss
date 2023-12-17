@@ -1,3 +1,10 @@
 .item-title {
   border-bottom: 1px solid black;
 }
+
+.item-content {
+  & > * {
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+}

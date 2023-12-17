@@ -19,7 +19,13 @@
     </span>
     <span> New task... </span>
   </button>
-  <app-task-item *ngFor="let task of taskList" [data]="task"></app-task-item>
+  <app-task-item *ngFor="let task of isOpened ? fullList : shortList" [task]="task"></app-task-item>
+  <div class="mt-2" *ngIf="!isOpened && fullList.length > shortList.length">
+    <a class="has-text-grey" (click)="toggleListOpened()">
+      <i class="fa fa-caret-down is-size-5 mr-2"></i>
+      Show all
+    </a>
+  </div>
 </div>
 
 <app-create-task-modal [taskType]="type"></app-create-task-modal>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DocumentsService} from "../../services/documents.service";
 
 @Component({
   selector: 'app-document-list',
@@ -6,37 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./document-list.component.scss'],
 })
 export class DocumentListComponent implements OnInit {
-  public documents = [
-    {
-      name: 'Document 1',
-    },
-    {
-      name: 'Document 2',
-    },
-    {
-      name: 'Document 3',
-    },
-    {
-      name: 'Document 4',
-    },
-    {
-      name: 'Document 5',
-    },
-    {
-      name: 'Document 6',
-    },
-    {
-      name: 'Document 4',
-    },
-    {
-      name: 'Document 5',
-    },
-    {
-      name: 'Document 6',
-    },
-  ];
+  public documents: any = [];
 
-  constructor() {}
+  constructor(private documentService: DocumentsService) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getDocuments();
+  }
+
+  private async getDocuments() {
+    await this.documentService.getAll().toPromise().then(res => this.documents = res);
+  }
+
+
+  async onFileSelect(event: any) {
+    const file: File = event.target?.files[0];
+    await this.documentService.uploadFile(file).toPromise();
+    window.location.reload();
+  }
+
 }

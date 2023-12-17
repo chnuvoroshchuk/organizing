@@ -22,8 +22,10 @@ export class TokenInterceptor implements HttpInterceptor{
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(req)
     req = req.clone({ url: `${BASE_URL}${req.url}`, headers: new HttpHeaders
-      ({'Content-Type': 'application/json',
+      ({
+        ...(req.url.includes('/upload/') ? {} : {'Content-Type': 'application/json'}),
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': 'true',
         'Access-Control-Allow-Headers': 'Content-Type',
@@ -46,7 +48,7 @@ export class TokenInterceptor implements HttpInterceptor{
   }
 
   private handleAuthError(error: HttpErrorResponse): Observable<any> {
-    if (error.status === 403) {
+    if (error.status === 403 && !error.url?.includes('/api/login?username=')) {
       this.router.navigate(['/'], {
           queryParams: {
             sessionFailed: true

@@ -19,6 +19,7 @@ import { CreateTaskModalComponent } from './components/modals/create-task-modal/
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ChatComponent} from "./components/chat/chat.component";
 import { ConfirmRegistrationComponent } from './components/confirm-registration/confirm-registration.component';
+import { EditTaskModalComponent } from './components/modals/edit-task-modal/edit-task-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ConfirmRegistrationComponent } from './components/confirm-registration/
     ChatComponent,
     CreateTaskModalComponent,
     ConfirmRegistrationComponent,
+    EditTaskModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [

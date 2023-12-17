@@ -16,7 +16,7 @@ export class CreateTaskModalComponent implements OnInit {
     type: new FormControl(null),
     status: new FormControl(null, [Validators.required]),
     duration: new FormControl(null, [Validators.required]),
-    canEdit: new FormControl(null),
+    canEdit: new FormControl(true),
     repeat: new FormControl(null)
   })
 
@@ -28,6 +28,7 @@ export class CreateTaskModalComponent implements OnInit {
     this.taskForm.value.type = this.taskType.toUpperCase()
     const body = {...this.taskForm.value};
     await this.taskService.addTask(body).toPromise();
+    window.location.reload();
     console.log(body);
   }
 }

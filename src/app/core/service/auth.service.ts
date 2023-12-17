@@ -25,16 +25,16 @@ export class AuthService {
         refresh_token: string;
       }>(`/api/login?username=${user.username}&password=${user.password}`, {})
       .pipe(
-        tap(({ access_token, refresh_token }) =>
-          this.setAuthData(access_token, refresh_token)
+        tap(({ access_token, refresh_token }) => {
+            this.setAuthData(access_token, refresh_token);
+            localStorage.setItem('username', user.username);
+        }
         )
       );
   }
 
   public logOut() {
-    return this.http
-      .post('/api/logout', {})
-      .pipe(tap(() => localStorage.clear()));
+    localStorage.clear();
   }
 
   public getToken(): string {
@@ -55,7 +55,6 @@ export class AuthService {
     const options = {
       params: new HttpParams().set('token', token),
     };
-    console.log('zalupa');
     return this.http.get('/api/confirm-account', options);
   }
 

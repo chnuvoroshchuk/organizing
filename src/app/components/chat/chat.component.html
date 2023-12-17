@@ -1,7 +1,7 @@
 <div class="chat-wrapper p-4">
   <div class="card chat-window p-5">
     <div class="card-content">
-      <div class="chat-content">
+      <div class="chat-content" #scrollMe>
         <div
           *ngFor="let chatItem of chatHistory"
           class="chat-message {{ chatItem?.fromUser ? 'fromUser' : '' }}"

@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
   async handleAuthClick() {
     if (this.isAuthorized) {
-      await this.authService.logOut().toPromise();
+      this.authService.logOut();
       this.isAuthorized = false;
     }
 
